@@ -59,13 +59,22 @@ how to do this. However, you may continue to use the + operator for string conca
 */
 
 export function sumAndMultiplyThreeNumbers(a, b, c) { //eslint-disable-line
-    const sum = a + b + c;
-    const multiply = a * b * c;
-    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sum + '.';
-    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply + '.';
-    const array = [sum, multiply, sumMessage, multiplyMessage];
+    const sumAB = sum(a, b);
+    const sumABC = sum(sumAB[0], c);
+    const productAB = multiply(a, b);
+    const productABC = multiply(productAB[0], c);
+    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sumABC + '.';
+    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productABC + '.';
+    const array = [sumABC[0], productABC[0], sumMessage, multiplyMessage];
+
     return array;
 }
+/*const sum = a + b + c;
+const multiply = a * b * c;
+const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sum + '.';
+const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply + '.';
+const array = [sum, multiply, sumMessage, multiplyMessage];
+return array;*/
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // Don't forget to create a new branch for your work on the next question!
@@ -144,8 +153,8 @@ export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     for(let arrayNums = 0;
         arrayNums < dynamicArray.length;
         arrayNums++){
-        arrayProduct = multiply(arrayProduct,);
-        console.log(arrayProduct);
+        arrayProduct = multiply(dynamicArray[arrayNums], arrayProduct,);
+        
     }
 }
 
