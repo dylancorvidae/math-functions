@@ -63,10 +63,9 @@ export function sumAndMultiplyThreeNumbers(a, b, c) { //eslint-disable-line
     const sumABC = sum(sumAB[0], c);
     const productAB = multiply(a, b);
     const productABC = multiply(productAB[0], c);
-    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sumABC + '.';
-    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productABC + '.';
+    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sumABC[0] + '.';
+    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productABC[0] + '.';
     const array = [sumABC[0], productABC[0], sumMessage, multiplyMessage];
-
     return array;
 }
 /*const sum = a + b + c;
@@ -150,14 +149,18 @@ This function should be dynamic, accepting an array of any length.
 
 export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     let arrayProduct = 1;
-    for(let arrayNums = 0;
-        arrayNums < dynamicArray.length;
-        arrayNums++){
-        arrayProduct = multiply(dynamicArray[arrayNums], arrayProduct,);
-        
+    for(let i = 0; i < dynamicArray.length; i++){
+        arrayProduct = multiply(dynamicArray[i], arrayProduct,)[0];
+        console.log(arrayProduct);}}
+       /* let numsInArray = '';
+        numsInArray = dynamicArray[i] + ',';
+        const anyArrayMessage = 'The numbers ' + numsInArray + 'have a product of ' + arrayProduct + '.';
+        const array = [arrayProduct, anyArrayMessage];
+        console.log(arrayProduct);
+        return array;
     }
 }
-
+*/
 //need to use array.length property somehow
 
 
