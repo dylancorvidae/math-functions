@@ -59,13 +59,21 @@ how to do this. However, you may continue to use the + operator for string conca
 */
 
 export function sumAndMultiplyThreeNumbers(a, b, c) { //eslint-disable-line
-    const sum = a + b + c;
-    const multiply = a * b * c;
-    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sum + '.';
-    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply + '.';
-    const array = [sum, multiply, sumMessage, multiplyMessage];
+    const sumAB = sum(a, b);
+    const sumABC = sum(sumAB[0], c);
+    const productAB = multiply(a, b);
+    const productABC = multiply(productAB[0], c);
+    const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sumABC[0] + '.';
+    const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productABC[0] + '.';
+    const array = [sumABC[0], productABC[0], sumMessage, multiplyMessage];
     return array;
 }
+/*const sum = a + b + c;
+const multiply = a * b * c;
+const sumMessage = a + ' and ' + b + ' and ' + c + ' sum to ' + sum + '.';
+const multiplyMessage = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply + '.';
+const array = [sum, multiply, sumMessage, multiplyMessage];
+return array;*/
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // Don't forget to create a new branch for your work on the next question!
@@ -121,25 +129,40 @@ export function multiplyArrayWithThreeNumbers(multArr) { //eslint-disable-line
 }
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
-
 // You're done! Submit the link to the repo following the instructions in Canvas. Or, try out the stretch goal below...
-
 // Don't forget to create a new branch for your work on the next question, if you attempt it.
-
 /////////////////////////////////////
 /* STRETCH GOAL: Problem 6
-Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and concatenates a message using the arguments that were passed into the function:
+Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument 
+and returns an array whose first element is the product of those numbers, and the second element is a 
+string that EXACTLY follows this example and concatenates a message using the arguments that were passed 
+into the function:
 
 "The numbers 1,2,3,4,5 have a product of 120."
 
-IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To do multiplication, use your multiply() function that you've already created. You're going to have to be resourceful to figure out how to do this. However, you may continue to use the + operator for string concatenation.
+IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To do multiplication, 
+use your multiply() function that you've already created. You're going to have to be resourceful to 
+figure out how to do this. However, you may continue to use the + operator for string concatenation.
 
 This function should be dynamic, accepting an array of any length.
 */
 
 export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+    let arrayProduct = 1;
+    for(let i = 0; i < dynamicArray.length; i++){
+        arrayProduct = multiply(dynamicArray[i], arrayProduct,)[0];
+        console.log(arrayProduct);}}
+       /* let numsInArray = '';
+        numsInArray = dynamicArray[i] + ',';
+        const anyArrayMessage = 'The numbers ' + numsInArray + 'have a product of ' + arrayProduct + '.';
+        const array = [arrayProduct, anyArrayMessage];
+        console.log(arrayProduct);
+        return array;
+    }
 }
+*/
+//need to use array.length property somehow
+
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // You're done! Submit the link to the repo following the instructions in Canvas.
